@@ -74,6 +74,10 @@ if [[ ! -f $sudo ]]; then
 	exit 1
 fi
 
+if [[ -f /etc/debian_version ]] && [[ ! -f /usr/bin/column ]]; then
+	system "sudo apt-get install -y bsdmainutils"
+fi
+
 out="/usr/bin/ssc"
 outln="/usr/bin/sshconfig"
 if [ "$(uname)" == "Darwin" ]; then
